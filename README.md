@@ -4,6 +4,9 @@
 
 We reproduce and extend Ghorbani et al. [1] by comparing NTKRR, RFKRR, MLP‐NN, and a CNN under a Spiked Covariate Model (SCM) on FMNIST and MNIST. By injecting controlled high‐frequency (HF) noise via a DCT‐based filter, we measure accuracy degradation and track covariance eigenvalue spectra. Our results show that kernel methods degrade sharply with HF noise, MLPs require extensive training, and CNNs remain most robust.
 
+A detailed report including theoretical background and extended results is available [here](https://github.com/MariusDragic/NeuralVSKernel/blob/main/NeuralVSKernel_report.pdf) for interested readers.
+
+
 ## Spiked Covariate Model (SCM)
 
 Each datapoint $x\in\mathbb{R}^d$ is generated as
@@ -24,19 +27,19 @@ where $F$ masks high‐frequency coefficients, $\tau$ controls noise amplitude, 
 <p align="center">
   <img src="images/eigen_value_HF.png" alt="Eigenvalues under HF noise" width="80%">
 </p>
-
-*Figure 1 – FMNIST covariance eigenvalues flatten as tau increases, confirming isotropic HF noise.*
+<p align="center">
+  <b>Figure 1 – FMNIST covariance eigenvalues flatten as tau increases, confirming isotropic HF noise.</b>
+</p>
 
 <p align="center">
   <img src="images/HF_FMNIST.png" alt="FMNIST under varying noise levels" width="80%">
 </p>
 
 <p align="center">
-  <b>Figure 2 – FMNIST samples corrupted by increasing high-frequency noise levels (τ).</b><br>
-  As τ increases from 0.0 to 1.5, visual structures are progressively destroyed, illustrating the effect of isotropic perturbations on image space.
+  <b>Figure 2 – FMNIST samples corrupted by increasing high-frequency noise levels (τ).</b>
 </p>
 
-
+As τ increases from 0.0 to 1.5, visual structures are progressively destroyed, illustrating the effect of isotropic perturbations on image space.
 ## Methods
 
 1. **NTKRR & RFKRR**  
@@ -54,8 +57,6 @@ where $F$ masks high‐frequency coefficients, $\tau$ controls noise amplitude, 
    - Four noise levels $\tau\in\{0,1,3,5\}$.  
    - All images normalized to $\|\cdot\| = \sqrt{d}$.
 
----
-
 ## Experimental Results
 
 Test accuracies (averaged over 5 seeds) on FMNIST:
@@ -72,12 +73,16 @@ Test accuracies (averaged over 5 seeds) on FMNIST:
 - **High noise $\tau=3,5$**: Kernels fall below 54 %; MLP at 60 %; CNN remains best at 62 %.
 
 <p align="center">
-  <img src="images/results.png" alt="Accuracy vs. HF noise" width="80%">
+  <img src="images/results.png" alt="Accuracy vs. HF noise" width="100%">
+</p>
+<p align="center">
+<b>Figure 3 – FMNIST accuracy under HF noise for NTKRR, RFKRR, MLP, and CNN.</b>
 </p>
 
-*Figure 3 – FMNIST accuracy under HF noise for NTKRR, RFKRR, MLP, and CNN.*
+## Authors
 
+- **Marius Dragic** — [@MariusDragic](https://github.com/MariusDragic)  
+- **Alexis Chatail-Rigolleau** — [@6racuse](https://github.com/6racuse)
 
-**Authors:**  
-Marius Dragic (<marius.dragic@student-cs.fr>)  
-Alexis Chatail-Rigolleau (<alexis.chatail-rigolleau@student-cs.fr>)  
+If you use this work or code in your research, please consider citing the project report:
+> M. Dragic, A. Chatail-Rigolleau. *When Do Neural Networks Outperform Kernel Methods?* CentraleSupélec TDL Project Report, 2025. [PDF](https://github.com/MariusDragic/NeuralVSKernel/blob/main/NeuralVSKernel_report.pdf)
