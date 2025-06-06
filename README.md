@@ -79,6 +79,13 @@ Test accuracies (averaged over 5 seeds) on FMNIST:
 <b>Figure 3 – FMNIST accuracy under HF noise for NTKRR, RFKRR, MLP, and CNN.</b>
 </p>
 
+## Requirements
+
+Install dependencies:
+```bash
+pip install -r requirement.txt
+```
+
 ## Authors
 
 - **Marius Dragic** — [@MariusDragic](https://github.com/MariusDragic)  
